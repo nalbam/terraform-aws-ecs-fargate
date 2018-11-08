@@ -26,7 +26,7 @@ resource "aws_security_group" "lb" {
 }
 
 resource "aws_security_group" "tasks" {
-  name        = "tf-ecs-${var.name}-tasks"
+  name        = "tf-ecs-${var.name}-${var.stage}-tasks"
   description = "allow inbound access from the ALB only"
 
   vpc_id = "${aws_vpc.main.id}"
@@ -46,6 +46,6 @@ resource "aws_security_group" "tasks" {
   }
 
   tags {
-    Name = "tf-ecs-${var.name}-tasks"
+    Name = "tf-ecs-${var.name}-${var.stage}-tasks"
   }
 }

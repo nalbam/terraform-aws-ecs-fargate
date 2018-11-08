@@ -8,6 +8,10 @@ variable name {
   default = "demo"
 }
 
+variable stage {
+  default = "dev"
+}
+
 variable image {
   default = "nalbam/sample-web"
 }

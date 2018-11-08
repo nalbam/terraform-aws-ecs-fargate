@@ -10,7 +10,7 @@ resource "aws_subnet" "public" {
 
   tags = "${
     map(
-     "Name", "tf-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}-${var.stage}",
     )
   }"
 }
@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "public" {
 
   tags = "${
     map(
-     "Name", "tf-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}-${var.stage}",
     )
   }"
 }
@@ -35,7 +35,7 @@ resource "aws_route_table" "public" {
 
   tags = "${
     map(
-     "Name", "tf-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}-${var.stage}",
     )
   }"
 }

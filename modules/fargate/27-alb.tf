@@ -1,13 +1,13 @@
 # alb
 
 resource "aws_alb" "main" {
-  name            = "tf-ecs-${var.name}-app"
+  name            = "tf-ecs-${var.name}-${var.stage}-app"
   subnets         = ["${aws_subnet.public.*.id}"]
   security_groups = ["${aws_security_group.lb.id}"]
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "tf-ecs-${var.name}-app"
+  name        = "tf-ecs-${var.name}-${var.stage}-app"
   port        = "${var.external_port}"
   protocol    = "HTTP"
   vpc_id      = "${aws_vpc.main.id}"
