@@ -1,7 +1,7 @@
 # security group
 
 resource "aws_security_group" "lb" {
-  name        = "${var.name}-lb"
+  name        = "tf-ecs-${var.name}-lb"
   description = "controls access to the ALB"
 
   vpc_id = "${aws_vpc.main.id}"
@@ -19,10 +19,14 @@ resource "aws_security_group" "lb" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags {
+    Name = "tf-ecs-${var.name}-lb"
+  }
 }
 
 resource "aws_security_group" "tasks" {
-  name        = "${var.name}-tasks"
+  name        = "tf-ecs-${var.name}-tasks"
   description = "allow inbound access from the ALB only"
 
   vpc_id = "${aws_vpc.main.id}"
@@ -39,5 +43,9 @@ resource "aws_security_group" "tasks" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "tf-ecs-${var.name}-tasks"
   }
 }

@@ -1,7 +1,7 @@
 # ecs task
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "app"
+  family                   = "${var.name}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.cpu}"

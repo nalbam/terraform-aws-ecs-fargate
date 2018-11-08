@@ -1,14 +1,4 @@
-# vpc
-
-resource "aws_vpc" "main" {
-  cidr_block = "${var.cidr_block}"
-
-  tags = "${
-    map(
-     "Name", "terraform-ecs-${var.name}",
-    )
-  }"
-}
+# subnet public
 
 resource "aws_subnet" "public" {
   count = 2
@@ -20,7 +10,7 @@ resource "aws_subnet" "public" {
 
   tags = "${
     map(
-     "Name", "terraform-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}",
     )
   }"
 }
@@ -30,7 +20,7 @@ resource "aws_internet_gateway" "public" {
 
   tags = "${
     map(
-     "Name", "terraform-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}",
     )
   }"
 }
@@ -45,7 +35,7 @@ resource "aws_route_table" "public" {
 
   tags = "${
     map(
-     "Name", "terraform-ecs-${var.name}",
+     "Name", "tf-ecs-${var.name}",
     )
   }"
 }

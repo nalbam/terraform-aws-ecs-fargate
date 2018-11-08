@@ -18,7 +18,7 @@ module "fargate" {
   name          = "demo"
   image         = "nalbam/sample-node"
   count         = "1"
-  cpu           = "250"
+  cpu           = "256"
   memory        = "512"
   internal_port = "3000"
   external_port = "80"
