@@ -13,21 +13,30 @@ terraform {
 }
 
 module "fargate" {
-  source        = "./modules/fargate"
-  region        = "ap-northeast-2"
-  name          = "demo"
-  stage         = "dev"
-  image         = "nalbam/sample-spring"
-  desired       = "1"
-  min           = "1"
-  max           = "5"
-  cpu           = "512"
-  memory        = "1024"
-  internal_port = "8080"
-  external_port = "80"
-  cidr_block    = "10.8.0.0/16"
+  source      = "./modules/fargate"
+  region      = "ap-northeast-2"
+  name        = "demo"
+  stage       = "dev"
+  image       = "nalbam/sample-spring"
+  port        = "8080"
+  cpu         = "512"
+  memory      = "1024"
+  desired     = "1"
+  min         = "1"
+  max         = "5"
+  cidr_block  = "10.8.0.0/16"
+  base_domain = "nalbam.com"
+}
+
+output "alb_name" {
+  value = "${module.fargate.alb_name}"
 }
 
 output "dns_name" {
   value = "${module.fargate.dns_name}"
 }
+
+# output "dns_name" {
+#   count = "${count(module.fargate.dns_name)}"
+#   value = "https://${module.fargate.dns_name[count.index]}"
+# }

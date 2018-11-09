@@ -17,8 +17,8 @@ resource "aws_ecs_task_definition" "app" {
     "networkMode": "awsvpc",
     "portMappings": [
       {
-        "containerPort": ${var.internal_port},
-        "hostPort": ${var.internal_port}
+        "containerPort": ${var.port},
+        "hostPort": ${var.port}
       }
     ],
     "environment": [

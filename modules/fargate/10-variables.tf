@@ -40,16 +40,16 @@ variable memory {
   default = "512"
 }
 
-variable internal_port {
+variable port {
   default = "8080"
-}
-
-variable external_port {
-  default = "80"
 }
 
 variable "cidr_block" {
   default = "10.0.0.0/16"
+}
+
+variable "base_domain" {
+  default = ""
 }
 
 data "aws_availability_zones" "available" {}

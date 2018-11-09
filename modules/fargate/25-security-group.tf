@@ -8,8 +8,15 @@ resource "aws_security_group" "lb" {
 
   ingress {
     protocol    = "tcp"
-    from_port   = "${var.external_port}"
-    to_port     = "${var.external_port}"
+    from_port   = "80"
+    to_port     = "80"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    protocol    = "tcp"
+    from_port   = "443"
+    to_port     = "443"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -33,8 +40,8 @@ resource "aws_security_group" "tasks" {
 
   ingress {
     protocol        = "tcp"
-    from_port       = "${var.internal_port}"
-    to_port         = "${var.internal_port}"
+    from_port       = "${var.port}"
+    to_port         = "${var.port}"
     security_groups = ["${aws_security_group.lb.id}"]
   }
 

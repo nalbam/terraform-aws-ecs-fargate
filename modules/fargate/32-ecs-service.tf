@@ -13,12 +13,12 @@ resource "aws_ecs_service" "main" {
   }
 
   load_balancer {
-    target_group_arn = "${aws_alb_target_group.app.id}"
+    target_group_arn = "${aws_alb_target_group.main.id}"
     container_name   = "${var.name}-${var.stage}"
-    container_port   = "${var.internal_port}"
+    container_port   = "${var.port}"
   }
 
   depends_on = [
-    "aws_alb_listener.front",
+    "aws_alb_listener.http",
   ]
 }
