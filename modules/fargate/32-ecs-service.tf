@@ -9,7 +9,7 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups = ["${aws_security_group.tasks.id}"]
-    subnets         = ["${aws_subnet.public.*.id}"]
+    subnets         = ["${aws_subnet.private.*.id}"]
   }
 
   load_balancer {

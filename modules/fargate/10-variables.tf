@@ -16,6 +16,10 @@ variable image {
   default = "nalbam/sample-web"
 }
 
+variable az_count {
+  default = "2"
+}
+
 variable count {
   default = "1"
 }
