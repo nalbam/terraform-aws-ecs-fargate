@@ -20,6 +20,14 @@ variable count {
   default = "1"
 }
 
+variable min {
+  default = "1"
+}
+
+variable max {
+  default = "10"
+}
+
 variable cpu {
   default = "256"
 }

@@ -26,15 +26,7 @@ resource "aws_ecs_task_definition" "app" {
         "name": "PROFILE",
         "value": "${var.stage}"
       }
-    ],
-    "logConfiguration": {
-      "logDriver": "awslogs",
-      "options": {
-        "awslogs-group": "/fargate/service/${var.name}-${var.stage}",
-        "awslogs-region": "${var.region}",
-        "awslogs-stream-prefix": "ecs"
-      }
-    }
+    ]
   }
 ]
 DEFINITION
