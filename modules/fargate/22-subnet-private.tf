@@ -4,7 +4,7 @@ resource "aws_subnet" "private" {
   count = "${var.az_count}"
 
   vpc_id     = "${aws_vpc.main.id}"
-  cidr_block = "${cidrsubnet(aws_vpc.main.cidr_block, 8, 21 + count.index)}"
+  cidr_block = "${cidrsubnet(aws_vpc.main.cidr_block, 8, 30 + count.index)}"
 
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
 

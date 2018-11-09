@@ -22,7 +22,7 @@ resource "aws_internet_gateway" "gw" {
 
   tags = "${
     map(
-     "Name", "tf-ecs-${var.name}-${var.stage}",
+     "Name", "tf-ecs-${var.name}-${var.stage}-gw",
     )
   }"
 }

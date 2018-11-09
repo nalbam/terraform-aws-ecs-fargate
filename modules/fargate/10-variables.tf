@@ -20,7 +20,7 @@ variable az_count {
   default = "2"
 }
 
-variable count {
+variable desired {
   default = "1"
 }
 
