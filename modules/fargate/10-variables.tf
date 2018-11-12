@@ -16,10 +16,6 @@ variable image {
   default = "nalbam/sample-web"
 }
 
-variable az_count {
-  default = "2"
-}
-
 variable desired {
   default = "1"
 }
@@ -52,4 +48,4 @@ variable "base_domain" {
   default = ""
 }
 
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "azs" {}
