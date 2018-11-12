@@ -15,9 +15,9 @@ module "sample_web" {
   name  = "sample-web"
 
   image       = "nalbam/sample-web"
-  port        = "8080"
-  cpu         = "512"
-  memory      = "1024"
+  port        = "80"
+  cpu         = "128"
+  memory      = "256"
   desired     = "1"
   min         = "1"
   max         = "5"
