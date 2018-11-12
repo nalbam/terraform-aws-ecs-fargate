@@ -1,17 +1,14 @@
 # subnet private
 
 resource "aws_subnet" "private" {
-  count      = "${length(data.aws_availability_zones.azs.names) > 3 ? 3 : length(data.aws_availability_zones.azs.names)}"
-  vpc_id     = "${aws_vpc.main.id}"
-  cidr_block = "${cidrsubnet(aws_vpc.main.cidr_block, 8, 20 + count.index)}"
-
+  count             = "${length(data.aws_availability_zones.azs.names) > 3 ? 3 : length(data.aws_availability_zones.azs.names)}"
+  vpc_id            = "${data.aws_vpc.default.id}"
+  cidr_block        = "${cidrsubnet(data.aws_vpc.default.cidr_block, 8, 20 + count.index)}"
   availability_zone = "${data.aws_availability_zones.azs.names[count.index]}"
 
-  tags = "${
-    map(
-     "Name", "tf-ecs-${var.name}-${var.stage}-private",
-    )
-  }"
+  tags = {
+    Name = "${var.city}-${upper(element(split("", data.aws_availability_zones.azs.names[count.index]), length(data.aws_availability_zones.azs.names[count.index])-1))}-${var.stage}-${var.name}-PRIVATE"
+  }
 }
 
 resource "aws_eip" "private" {
@@ -28,22 +25,20 @@ resource "aws_nat_gateway" "private" {
 
 resource "aws_route_table" "private" {
   count  = "${length(data.aws_availability_zones.azs.names) > 3 ? 3 : length(data.aws_availability_zones.azs.names)}"
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${data.aws_vpc.default.id}"
 
   route {
-    cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = "${element(aws_nat_gateway.private.*.id, count.index)}"
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${element(aws_nat_gateway.private.*.id, count.index)}"
   }
 
-  tags = "${
-    map(
-     "Name", "tf-ecs-${var.name}-${var.stage}-private",
-    )
-  }"
+  tags = {
+    Name = "${var.city}-${upper(element(split("", data.aws_availability_zones.azs.names[count.index]), length(data.aws_availability_zones.azs.names[count.index])-1))}-${var.stage}-${var.name}-PRIVATE"
+  }
 }
 
 resource "aws_route_table_association" "private" {
   count          = "${length(data.aws_availability_zones.azs.names) > 3 ? 3 : length(data.aws_availability_zones.azs.names)}"
-  subnet_id      = "${aws_subnet.private.*.id[count.index]}"
-  route_table_id = "${aws_route_table.private.*.id[count.index]}"
+  subnet_id      = "${element(aws_subnet.private.*.id, count.index)}"
+  route_table_id = "${element(aws_route_table.private.*.id, count.index)}"
 }

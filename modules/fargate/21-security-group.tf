@@ -1,10 +1,10 @@
 # security group
 
-resource "aws_security_group" "lb" {
-  name        = "tf-ecs-${var.name}-lb"
+resource "aws_security_group" "public" {
+  name        = "${var.stage}-${var.name}-public"
   description = "controls access to the ALB"
 
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
 
   ingress {
     protocol    = "tcp"
@@ -28,21 +28,21 @@ resource "aws_security_group" "lb" {
   }
 
   tags {
-    Name = "tf-ecs-${var.name}-lb"
+    Name = "${var.stage}-${var.name}-public"
   }
 }
 
-resource "aws_security_group" "tasks" {
-  name        = "tf-ecs-${var.name}-${var.stage}-tasks"
+resource "aws_security_group" "private" {
+  name        = "${var.stage}-${var.name}-private"
   description = "allow inbound access from the ALB only"
 
-  vpc_id = "${aws_vpc.main.id}"
+  vpc_id = "${var.vpc_id}"
 
   ingress {
     protocol        = "tcp"
     from_port       = "${var.port}"
     to_port         = "${var.port}"
-    security_groups = ["${aws_security_group.lb.id}"]
+    security_groups = ["${aws_security_group.public.id}"]
   }
 
   egress {
@@ -53,6 +53,6 @@ resource "aws_security_group" "tasks" {
   }
 
   tags {
-    Name = "tf-ecs-${var.name}-${var.stage}-tasks"
+    Name = "${var.stage}-${var.name}-private"
   }
 }

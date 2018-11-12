@@ -1,19 +1,44 @@
 # variable
 
-variable region {
-  default = "ap-northeast-2"
+variable "region" {
+  description = "The region to deploy the cluster in, e.g: us-east-1"
 }
 
-variable name {
-  default = "demo"
+variable "cluster_id" {
+  description = "The VPC ID."
+  default     = ""
 }
 
-variable stage {
-  default = "dev"
+variable "cluster_name" {
+  description = "The VPC ID."
+  default     = ""
+}
+
+variable "vpc_id" {
+  description = "The VPC ID."
+  default     = ""
+}
+
+variable "subnet_public_ids" {
+  description = "The VPC ID."
+  default     = []
+}
+
+variable "subnet_private_ids" {
+  description = "The VPC ID."
+  default     = []
+}
+
+variable "stage" {
+  description = "Stage Name of the cluster, e.g: dev"
+}
+
+variable "name" {
+  description = "Name of the cluster, e.g: sample-spring"
 }
 
 variable image {
-  default = "nalbam/sample-web"
+  default = "nalbam/sample-spring"
 }
 
 variable desired {
@@ -38,10 +63,6 @@ variable memory {
 
 variable port {
   default = "8080"
-}
-
-variable "cidr_block" {
-  default = "10.0.0.0/16"
 }
 
 variable "base_domain" {

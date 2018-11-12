@@ -12,29 +12,18 @@ terraform {
   }
 }
 
-module "fargate" {
-  source = "./modules/fargate"
+module "ecs" {
+  source = "./modules/ecs"
 
   region = "ap-northeast-2"
-  stage  = "dev"
-  name   = "demo"
+  city   = "SEOUL"
+  stage  = "DEV"
+  name   = "DEMO"
 
+  vpc_id     = ""
   cidr_block = "10.12.0.0/16"
-
-  image       = "nalbam/sample-spring"
-  port        = "8080"
-  cpu         = "512"
-  memory      = "1024"
-  desired     = "1"
-  min         = "1"
-  max         = "5"
-  base_domain = "nalbam.com"
 }
 
-output "alb_name" {
-  value = "${module.fargate.alb_name}"
-}
-
-output "dns_name" {
-  value = "${module.fargate.dns_name}"
+output "cluster_name" {
+  value = "${module.ecs.cluster_name}"
 }

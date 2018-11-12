@@ -2,14 +2,14 @@
 
 resource "aws_ecs_service" "main" {
   name            = "${var.name}-${var.stage}"
-  cluster         = "${aws_ecs_cluster.main.id}"
+  cluster         = "${var.cluster_id}"
   task_definition = "${aws_ecs_task_definition.app.arn}"
   desired_count   = "${var.desired}"
   launch_type     = "FARGATE"
 
   network_configuration {
-    security_groups = ["${aws_security_group.tasks.id}"]
-    subnets         = ["${aws_subnet.private.*.id}"]
+    security_groups = ["${aws_security_group.private.id}"]
+    subnets         = ["${var.subnet_private_ids}"]
   }
 
   load_balancer {
