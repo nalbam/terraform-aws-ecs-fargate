@@ -6,11 +6,13 @@ data "aws_route53_zone" "main" {
 }
 
 data "aws_acm_certificate" "main" {
-  count    = "${var.base_domain != "" ? 1 : 0}"
-  domain   = "${var.base_domain}"
+  count  = "${var.base_domain != "" ? 1 : 0}"
+  domain = "${var.base_domain}"
+
   statuses = [
-    "ISSUED"
+    "ISSUED",
   ]
+
   most_recent = true
 }
 
@@ -20,7 +22,8 @@ resource "aws_route53_record" "main" {
   name    = "tf-ecs-${var.name}-${var.stage}.${var.base_domain}"
   type    = "CNAME"
   ttl     = 300
+
   records = [
-    "${aws_alb.main.dns_name}"
+    "${aws_alb.main.dns_name}",
   ]
 }
