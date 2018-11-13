@@ -3,7 +3,8 @@
 module "sample_web" {
   source = "./modules/fargate"
 
-  region = "ap-northeast-2"
+  region = "${var.region}"
+  stage  = "${var.stage}"
 
   cluster_id         = "${module.ecs.cluster_id}"
   cluster_name       = "${module.ecs.cluster_name}"
@@ -11,9 +12,7 @@ module "sample_web" {
   subnet_public_ids  = "${module.ecs.subnet_public_ids}"
   subnet_private_ids = "${module.ecs.subnet_private_ids}"
 
-  stage = "dev"
-  name  = "sample-web"
-
+  name        = "sample-web"
   image       = "nalbam/sample-web"
   port        = "80"
   cpu         = "256"

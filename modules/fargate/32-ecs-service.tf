@@ -1,7 +1,7 @@
 # ecs service
 
 resource "aws_ecs_service" "main" {
-  name            = "${var.name}-${var.stage}"
+  name            = "${local.lower_name}"
   cluster         = "${var.cluster_id}"
   task_definition = "${aws_ecs_task_definition.app.arn}"
   desired_count   = "${var.desired}"
@@ -14,7 +14,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = "${aws_alb_target_group.main.id}"
-    container_name   = "${var.name}-${var.stage}"
+    container_name   = "${local.lower_name}"
     container_port   = "${var.port}"
   }
 

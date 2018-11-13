@@ -3,11 +3,12 @@
 resource "aws_vpc" "default" {
   count = "${var.vpc_id == "" ? 1 : 0}"
 
-  cidr_block           = "${var.cidr_block}"
+  cidr_block = "${var.cidr_block}"
+
   enable_dns_hostnames = true
 
   tags = {
-    Name = "${var.city}-${var.stage}-${var.name}-VPC"
+    Name = "${local.full_name}-VPC"
   }
 }
 

@@ -19,7 +19,7 @@ data "aws_acm_certificate" "main" {
 resource "aws_route53_record" "main" {
   count   = "${var.base_domain != "" ? 1 : 0}"
   zone_id = "${data.aws_route53_zone.main.zone_id}"
-  name    = "${var.name}-${var.stage}.${var.base_domain}"
+  name    = "${local.lower_name}.${var.base_domain}"
   type    = "CNAME"
   ttl     = 300
 
