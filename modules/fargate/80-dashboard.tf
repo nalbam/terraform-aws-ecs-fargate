@@ -1,7 +1,7 @@
 # dashboard
 
 resource "aws_cloudwatch_dashboard" "app" {
-  dashboard_name = "${var.cluster_name}-${aws_ecs_service.app.name}"
+  dashboard_name = "${aws_ecs_service.app.name}-${var.cluster_name}"
 
   dashboard_body = <<EOF
 {
