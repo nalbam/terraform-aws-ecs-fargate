@@ -1,44 +1,41 @@
-# variable
+# variables
 
 variable "region" {
   description = "The region to deploy the cluster in, e.g: us-east-1"
 }
 
 variable "cluster_id" {
-  description = "The VPC ID."
-  default     = ""
+  description = "The ECS Cluster ID."
 }
 
 variable "cluster_name" {
-  description = "The VPC ID."
-  default     = ""
+  description = "The ECS Cluster Name."
 }
 
 variable "vpc_id" {
-  description = "The VPC ID."
-  default     = ""
+  description = "VPC ID of the ecs cluster."
 }
 
 variable "subnet_public_ids" {
-  description = "The VPC ID."
-  default     = []
+  description = "Public Subnet IDs of the ecs cluster."
+  type        = "list"
 }
 
 variable "subnet_private_ids" {
-  description = "The VPC ID."
-  default     = []
+  description = "Private Subnet IDs of the ecs cluster."
+  type        = "list"
 }
 
 variable "stage" {
-  description = "Stage Name of the cluster, e.g: dev"
+  description = "Stage Name of the ecs fargate app, e.g: dev"
 }
 
 variable "name" {
-  description = "Name of the cluster, e.g: sample-spring"
+  description = "Name of the ecs fargate app, e.g: sample-spring"
 }
 
 variable image {
-  default = "nalbam/sample-spring"
+  description = "Image of the ecs fargate app, e.g: nalbam/sample-spring"
 }
 
 variable desired {
@@ -63,6 +60,14 @@ variable memory {
 
 variable port {
   default = "8080"
+}
+
+variable cpu_low {
+  default = "20"
+}
+
+variable cpu_high {
+  default = "80"
 }
 
 variable "base_domain" {

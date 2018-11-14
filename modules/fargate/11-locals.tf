@@ -1,6 +1,6 @@
 # locals
 
 locals {
-  full_name  = "${var.stage}-${var.name}"
+  full_name  = "${var.name}-${var.stage}"
   lower_name = "${lower(local.full_name)}"
 }
