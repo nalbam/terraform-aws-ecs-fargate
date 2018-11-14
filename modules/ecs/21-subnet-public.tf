@@ -1,4 +1,4 @@
-// subnet public
+# subnet public
 
 resource "aws_subnet" "public" {
   count             = "${length(data.aws_availability_zones.azs.names) > 3 ? 3 : length(data.aws_availability_zones.azs.names)}"
