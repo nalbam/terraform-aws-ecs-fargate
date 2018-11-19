@@ -8,7 +8,7 @@ resource "aws_vpc" "default" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "${local.full_name}-VPC"
+    Name = "${local.upper_name}-VPC"
   }
 }
 

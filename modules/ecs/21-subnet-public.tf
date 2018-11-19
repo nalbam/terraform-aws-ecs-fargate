@@ -18,7 +18,7 @@ resource "aws_internet_gateway" "public" {
   vpc_id = "${data.aws_vpc.default.id}"
 
   tags = {
-    Name = "${local.full_name}-PUBLIC"
+    Name = "${local.upper_name}-PUBLIC"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "${local.full_name}-PUBLIC"
+    Name = "${local.upper_name}-PUBLIC"
   }
 }
 
