@@ -8,10 +8,6 @@ variable "cluster_id" {
   description = "The ECS Cluster ID."
 }
 
-variable "cluster_name" {
-  description = "The ECS Cluster Name."
-}
-
 variable "vpc_id" {
   description = "VPC ID of the ecs cluster."
 }
