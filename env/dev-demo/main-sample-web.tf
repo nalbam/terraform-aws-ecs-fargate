@@ -4,7 +4,7 @@ module "sample_web" {
   source = "../../modules/fargate"
 
   region = "${var.region}"
-  stage  = "${lower(var.stage)}"
+  stage  = "${var.stage}"
 
   cluster_id         = "${module.ecs.cluster_id}"
   cluster_name       = "${module.ecs.cluster_name}"
