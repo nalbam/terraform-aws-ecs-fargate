@@ -1,10 +1,10 @@
 # ecs fargate
 
 module "sample_spring" {
-  source = "./modules/fargate"
+  source = "../../modules/fargate"
 
   region = "${var.region}"
-  stage  = "${var.stage}"
+  stage  = "${lower(var.stage)}"
 
   cluster_id         = "${module.ecs.cluster_id}"
   cluster_name       = "${module.ecs.cluster_name}"

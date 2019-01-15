@@ -9,7 +9,7 @@ output "cluster_name" {
 }
 
 output "vpc_id" {
-  value = "${data.aws_vpc.default.id}"
+  value = "${data.aws_vpc.cluster.id}"
 }
 
 output "subnet_public_ids" {

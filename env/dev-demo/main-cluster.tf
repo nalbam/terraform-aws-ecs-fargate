@@ -13,15 +13,17 @@ provider "aws" {
 }
 
 module "ecs" {
-  source = "./modules/ecs"
+  source = "../../modules/ecs"
 
   region = "${var.region}"
   city   = "${var.city}"
   stage  = "${var.stage}"
   name   = "${var.name}"
+  suffix = "${var.suffix}"
 
-  vpc_id     = ""
-  cidr_block = "10.12.0.0/16"
+  # vpc_id     = ""
+  # subnet_ids = []
+  vpc_cidr = "10.20.0.0/16"
 }
 
 output "cluster_name" {

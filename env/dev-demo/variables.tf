@@ -15,3 +15,7 @@ variable "stage" {
 variable "name" {
   default = "DEMO"
 }
+
+variable "suffix" {
+  default = "FARGATE"
+}
