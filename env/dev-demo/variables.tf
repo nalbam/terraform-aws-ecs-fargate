@@ -19,3 +19,7 @@ variable "name" {
 variable "suffix" {
   default = "FARGATE"
 }
+
+variable "base_domain" {
+  default = "nalbam.com"
+}

@@ -21,7 +21,7 @@ module "sample_spring" {
   min     = "1"
   max     = "5"
 
-  base_domain = "nalbam.com"
+  base_domain = "${var.base_domain}"
 }
 
 output "sample_spring_app_name" {

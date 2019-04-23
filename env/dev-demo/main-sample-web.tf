@@ -21,7 +21,7 @@ module "sample_web" {
   min     = "1"
   max     = "5"
 
-  base_domain = "nalbam.com"
+  base_domain = "${var.base_domain}"
 }
 
 output "sample_web_app_name" {
