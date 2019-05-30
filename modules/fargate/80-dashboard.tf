@@ -194,4 +194,5 @@ resource "aws_cloudwatch_dashboard" "app" {
     ]
 }
 EOF
+
 }

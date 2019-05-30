@@ -17,5 +17,5 @@ variable "name" {
 }
 
 variable "suffix" {
-  default = "CLUSTER"
+  default = "ECS"
 }

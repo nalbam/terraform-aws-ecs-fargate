@@ -3,7 +3,7 @@
 resource "aws_security_group" "private" {
   name = "${local.lower_name}-private"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 
   egress {
     from_port   = 0
@@ -12,7 +12,7 @@ resource "aws_security_group" "private" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "${local.lower_name}-private"
   }
 }

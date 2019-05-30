@@ -4,7 +4,7 @@ resource "aws_security_group" "public" {
   name        = "${local.lower_name}-public"
   description = "controls access to the ALB"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 
   ingress {
     protocol    = "tcp"
@@ -27,7 +27,7 @@ resource "aws_security_group" "public" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "${local.lower_name}-public"
   }
 }
@@ -36,13 +36,13 @@ resource "aws_security_group" "private" {
   name        = "${local.lower_name}-private"
   description = "allow inbound access from the ALB only"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 
   ingress {
     protocol        = "tcp"
-    from_port       = "${var.port}"
-    to_port         = "${var.port}"
-    security_groups = ["${aws_security_group.public.id}"]
+    from_port       = var.port
+    to_port         = var.port
+    security_groups = [aws_security_group.public.id]
   }
 
   egress {
@@ -52,7 +52,7 @@ resource "aws_security_group" "private" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "${local.lower_name}-private"
   }
 }

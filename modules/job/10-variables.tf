@@ -14,12 +14,12 @@ variable "vpc_id" {
 
 variable "subnet_public_ids" {
   description = "Public Subnet IDs of the ecs cluster."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "subnet_private_ids" {
   description = "Private Subnet IDs of the ecs cluster."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "stage" {
@@ -30,20 +30,21 @@ variable "name" {
   description = "Name of the ecs fargate app, e.g: sample-spring"
 }
 
-variable image {
+variable "image" {
   description = "Image of the ecs fargate app, e.g: nalbam/sample-spring"
 }
 
-variable cpu {
+variable "cpu" {
   default = "256"
 }
 
-variable memory {
+variable "memory" {
   default = "512"
 }
 
-variable port {
+variable "port" {
   default = "8080"
 }
 
-data "aws_availability_zones" "azs" {}
+data "aws_availability_zones" "azs" {
+}

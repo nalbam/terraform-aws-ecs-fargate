@@ -32,8 +32,9 @@ variable "vpc_cidr" {
 
 variable "subnet_ids" {
   description = "List of Subnet Ids"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
-data "aws_availability_zones" "azs" {}
+data "aws_availability_zones" "azs" {
+}

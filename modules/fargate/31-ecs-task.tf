@@ -1,11 +1,11 @@
 # ecs task
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "${local.lower_name}"
+  family                   = local.lower_name
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "${var.cpu}"
-  memory                   = "${var.memory}"
+  cpu                      = var.cpu
+  memory                   = var.memory
 
   container_definitions = <<DEFINITION
 [
@@ -30,4 +30,5 @@ resource "aws_ecs_task_definition" "app" {
   }
 ]
 DEFINITION
+
 }
