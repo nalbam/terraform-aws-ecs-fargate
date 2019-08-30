@@ -5,17 +5,17 @@ variable "region" {
 }
 
 variable "city" {
-  default = "SEOUL"
+  default = "seoul"
 }
 
 variable "stage" {
-  default = "DEV"
+  default = "dev"
 }
 
 variable "name" {
-  default = "DEMO"
+  default = "demo"
 }
 
 variable "suffix" {
-  default = "ECS"
+  default = "ecs"
 }

@@ -19,15 +19,16 @@ module "job" {
   region = var.region
   stage  = var.stage
 
-  cluster_id         = "arn:aws:ecs:ap-northeast-2:968005369378:cluster/seoul-dev-demo-cluster"
-  vpc_id             = "vpc-0cf40c93f4fafc129"
-  subnet_public_ids  = ["subnet-0a544fa7eaabb17c2"]
-  subnet_private_ids = ["subnet-0abcf62e9748ffd9d"]
+  cluster_id = "arn:aws:ecs:ap-northeast-2:968005369378:cluster/seoul-dev-demo-cluster"
+
+  vpc_id             = var.vpc_id
+  subnet_public_ids  = var.subnet_public_ids
+  subnet_private_ids = var.subnet_private_ids
 
   name   = "builder-${random_string.suffix.result}"
   image  = "opspresso/builder"
   port   = "80"
-  cpu    = "256"
+  cpu    = "200"
   memory = "512"
 }
 

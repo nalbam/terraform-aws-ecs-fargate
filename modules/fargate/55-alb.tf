@@ -1,13 +1,13 @@
 # alb
 
 resource "aws_alb" "app" {
-  name            = local.lower_name
+  name            = local.full_name
   subnets         = var.subnet_public_ids
   security_groups = [aws_security_group.public.id]
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = local.lower_name
+  name        = local.full_name
   port        = "80"
   protocol    = "HTTP"
   vpc_id      = var.vpc_id

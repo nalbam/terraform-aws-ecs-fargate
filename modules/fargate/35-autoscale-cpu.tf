@@ -1,7 +1,7 @@
 # autoscal cpu
 
 resource "aws_cloudwatch_metric_alarm" "cpu_high" {
-  alarm_name          = "${local.lower_name}-CPU-Utilization-High-${var.cpu_high}"
+  alarm_name          = "${local.full_name}-CPU-Utilization-High-${var.cpu_high}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "1"
   metric_name         = "CPUUtilization"
@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_low" {
-  alarm_name          = "${local.lower_name}-CPU-Utilization-Low-${var.cpu_low}"
+  alarm_name          = "${local.full_name}-CPU-Utilization-Low-${var.cpu_low}"
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = "1"
   metric_name         = "CPUUtilization"

@@ -1,7 +1,7 @@
 # security group
 
 resource "aws_security_group" "public" {
-  name        = "${local.lower_name}-public"
+  name        = "${local.full_name}-public"
   description = "controls access to the ALB"
 
   vpc_id = var.vpc_id
@@ -28,12 +28,12 @@ resource "aws_security_group" "public" {
   }
 
   tags = {
-    Name = "${local.lower_name}-public"
+    Name = "${local.full_name}-public"
   }
 }
 
 resource "aws_security_group" "private" {
-  name        = "${local.lower_name}-private"
+  name        = "${local.full_name}-private"
   description = "allow inbound access from the ALB only"
 
   vpc_id = var.vpc_id
@@ -53,6 +53,6 @@ resource "aws_security_group" "private" {
   }
 
   tags = {
-    Name = "${local.lower_name}-private"
+    Name = "${local.full_name}-private"
   }
 }

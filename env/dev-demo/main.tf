@@ -21,10 +21,6 @@ module "ecs" {
   stage  = var.stage
   name   = var.name
   suffix = var.suffix
-
-  # vpc_id     = ""
-  # subnet_ids = []
-  vpc_cidr = "10.22.0.0/16"
 }
 
 output "cluster_name" {

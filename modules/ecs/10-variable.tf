@@ -20,21 +20,5 @@ variable "suffix" {
   description = "Suffix of the cluster, e.g: FARGATE"
 }
 
-variable "vpc_id" {
-  description = "The VPC ID."
-  default     = ""
-}
-
-variable "vpc_cidr" {
-  description = "The CIDR block of the VPC, e.g: 10.0.0.0/16"
-  default     = "10.0.0.0/16"
-}
-
-variable "subnet_ids" {
-  description = "List of Subnet Ids"
-  type        = list(string)
-  default     = []
-}
-
 data "aws_availability_zones" "azs" {
 }
