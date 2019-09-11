@@ -10,7 +10,8 @@ resource "aws_alb" "app" {
   ]
 
   tags = {
-    Name = local.full_name
+    Name    = local.full_name
+    Cluster = var.cluster_name
   }
 }
 
@@ -23,7 +24,8 @@ resource "aws_alb_target_group" "app" {
   target_type = "ip"
 
   tags = {
-    Name = local.full_name
+    Name    = local.full_name
+    Cluster = var.cluster_name
   }
 }
 

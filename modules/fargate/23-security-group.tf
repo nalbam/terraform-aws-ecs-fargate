@@ -28,7 +28,8 @@ resource "aws_security_group" "public" {
   }
 
   tags = {
-    Name = "${local.full_name}-public"
+    Name    = "${local.full_name}-public"
+    Cluster = var.cluster_name
   }
 }
 
@@ -53,6 +54,7 @@ resource "aws_security_group" "private" {
   }
 
   tags = {
-    Name = "${local.full_name}-private"
+    Name    = "${local.full_name}-private"
+    Cluster = var.cluster_name
   }
 }
