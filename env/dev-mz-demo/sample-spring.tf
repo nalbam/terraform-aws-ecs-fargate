@@ -22,6 +22,7 @@ module "sample_spring" {
   min     = "1"
   max     = "5"
 
+  domain      = "sample-spring-${var.stage}.fargate.${var.base_domain}"
   base_domain = var.base_domain
 }
 

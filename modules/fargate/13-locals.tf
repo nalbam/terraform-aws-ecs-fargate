@@ -3,7 +3,7 @@
 locals {
   full_name = "${var.name}-${var.stage}"
 
-  domain = "${local.full_name}.${var.cluster_name}.${var.base_domain}"
+  domain = var.domain != "" ? var.domain : "${local.full_name}.${var.cluster_name}.${var.base_domain}"
 }
 
 locals {

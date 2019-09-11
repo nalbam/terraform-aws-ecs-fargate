@@ -70,6 +70,10 @@ variable "cpu_high" {
   default = "80"
 }
 
+variable "domain" {
+  default = ""
+}
+
 variable "base_domain" {
   default = ""
 }
