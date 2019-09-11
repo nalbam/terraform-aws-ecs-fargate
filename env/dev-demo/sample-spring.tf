@@ -16,7 +16,7 @@ module "sample_spring" {
   name    = "sample-spring"
   image   = "nalbam/sample-spring"
   port    = "8080"
-  cpu     = "1000"
+  cpu     = "512"
   memory  = "1024"
   desired = "1"
   min     = "1"

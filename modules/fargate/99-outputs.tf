@@ -9,5 +9,5 @@ output "alb_dns_name" {
 }
 
 output "dns_name" {
-  value = aws_route53_record.app.*.name
+  value = local.dns_name
 }
