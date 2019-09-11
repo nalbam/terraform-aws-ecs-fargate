@@ -31,4 +31,8 @@ resource "aws_ecs_task_definition" "app" {
 ]
 DEFINITION
 
+  tags = {
+    Name    = local.full_name
+    Cluster = var.cluster_name
+  }
 }
