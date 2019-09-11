@@ -1,12 +1,17 @@
 # alb
 
 resource "aws_alb" "app" {
-  name    = local.full_name
+  name = local.full_name
+
   subnets = var.subnet_public_ids
 
   security_groups = [
     aws_security_group.public.id
   ]
+
+  tags = {
+    Name = local.full_name
+  }
 }
 
 resource "aws_alb_target_group" "app" {
@@ -16,6 +21,10 @@ resource "aws_alb_target_group" "app" {
   vpc_id   = var.vpc_id
 
   target_type = "ip"
+
+  tags = {
+    Name = local.full_name
+  }
 }
 
 resource "aws_alb_listener" "http" {

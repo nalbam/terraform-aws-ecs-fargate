@@ -7,5 +7,5 @@ locals {
 }
 
 locals {
-  dns_name = var.base_domain != "" ? local.domain : [aws_alb.app.dns_name]
+  dns_name = var.base_domain != "" ? local.domain : aws_alb.app.dns_name
 }
