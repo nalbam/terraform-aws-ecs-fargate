@@ -1,7 +1,16 @@
 # alb
 
+resource "random_pet" "alb" {
+  length = 1
+
+  keepers = {
+    name = var.name
+  }
+}
+
 resource "aws_alb" "app" {
-  name = local.full_name
+  # name_prefix = "fg-"
+  name = "${var.name}-${random_pet.alb.id}"
 
   subnets = var.subnet_public_ids
 
@@ -10,13 +19,14 @@ resource "aws_alb" "app" {
   ]
 
   tags = {
-    Name    = local.full_name
+    Name    = "${local.name}-${var.cluster_name}"
+    Service = local.name
     Cluster = var.cluster_name
   }
 }
 
 resource "aws_alb_target_group" "app" {
-  name     = local.full_name
+  name     = aws_alb.app.name
   port     = "80"
   protocol = "HTTP"
   vpc_id   = var.vpc_id
@@ -24,7 +34,8 @@ resource "aws_alb_target_group" "app" {
   target_type = "ip"
 
   tags = {
-    Name    = local.full_name
+    Name    = "${local.name}-${var.cluster_name}"
+    Service = local.name
     Cluster = var.cluster_name
   }
 }

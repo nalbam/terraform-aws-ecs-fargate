@@ -17,10 +17,7 @@ module "ecs" {
   source = "../../modules/ecs"
 
   region = var.region
-  city   = var.city
-  stage  = var.stage
   name   = var.name
-  suffix = var.suffix
 }
 
 output "cluster_id" {

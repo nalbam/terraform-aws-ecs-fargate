@@ -22,12 +22,12 @@ variable "subnet_private_ids" {
   type        = list(string)
 }
 
-variable "stage" {
-  description = "Stage Name of the ecs fargate app, e.g: dev"
-}
-
 variable "name" {
   description = "Name of the ecs fargate app, e.g: sample-spring"
+}
+
+variable "stage" {
+  description = "Stage Name of the ecs fargate app, e.g: dev"
 }
 
 variable "image" {

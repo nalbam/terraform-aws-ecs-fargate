@@ -1,7 +1,7 @@
 # ecs service
 
 resource "aws_ecs_service" "app" {
-  name            = local.full_name
+  name            = local.name
   cluster         = var.cluster_id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.desired
@@ -14,7 +14,7 @@ resource "aws_ecs_service" "app" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name   = local.full_name
+    container_name   = local.name
     container_port   = var.port
   }
 

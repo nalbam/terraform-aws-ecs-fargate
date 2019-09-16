@@ -4,7 +4,6 @@ module "sample_spring" {
   source = "../../modules/fargate"
 
   region = var.region
-  stage  = var.stage
 
   cluster_id   = module.ecs.cluster_id
   cluster_name = module.ecs.cluster_name
@@ -14,6 +13,7 @@ module "sample_spring" {
   subnet_private_ids = var.subnet_private_ids
 
   name    = "sample-spring"
+  stage   = "dev"
   image   = "nalbam/sample-spring"
   port    = "8080"
   cpu     = "512"
@@ -22,7 +22,7 @@ module "sample_spring" {
   min     = "1"
   max     = "5"
 
-  domain      = "sample-spring-${var.stage}.fargate.${var.base_domain}"
+  domain      = "sample-spring-dev.fargate.${var.base_domain}"
   base_domain = var.base_domain
 }
 

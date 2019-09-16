@@ -4,20 +4,8 @@ variable "region" {
   default = "ap-northeast-2"
 }
 
-variable "city" {
-  default = "seoul"
-}
-
-variable "stage" {
-  default = "dev"
-}
-
 variable "name" {
-  default = "demo"
-}
-
-variable "suffix" {
-  default = "job"
+  default = "seoul-dev-demo-ecs-job"
 }
 
 variable "vpc_id" {

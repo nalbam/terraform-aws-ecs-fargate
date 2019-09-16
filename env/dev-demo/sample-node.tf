@@ -4,7 +4,6 @@ module "sample_node" {
   source = "../../modules/fargate"
 
   region = var.region
-  stage  = var.stage
 
   cluster_id   = module.ecs.cluster_id
   cluster_name = module.ecs.cluster_name
@@ -14,6 +13,7 @@ module "sample_node" {
   subnet_private_ids = var.subnet_private_ids
 
   name    = "sample-node"
+  stage   = "dev"
   image   = "nalbam/sample-node"
   port    = "8080"
   cpu     = "256"
@@ -22,7 +22,7 @@ module "sample_node" {
   min     = "1"
   max     = "5"
 
-  domain      = "sample-node-${var.stage}.fargate.${var.base_domain}"
+  domain      = "sample-node-dev.fargate.${var.base_domain}"
   base_domain = var.base_domain
 }
 

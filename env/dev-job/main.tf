@@ -13,29 +13,17 @@ provider "aws" {
   region = var.region
 }
 
-module "job" {
-  source = "../../modules/job"
+module "ecs" {
+  source = "../../modules/ecs"
 
   region = var.region
-  stage  = var.stage
-
-  cluster_id = "arn:aws:ecs:ap-northeast-2:968005369378:cluster/seoul-dev-demo-cluster"
-
-  vpc_id             = var.vpc_id
-  subnet_public_ids  = var.subnet_public_ids
-  subnet_private_ids = var.subnet_private_ids
-
-  name   = "builder-${random_string.suffix.result}"
-  image  = "opspresso/builder"
-  port   = "80"
-  cpu    = "200"
-  memory = "512"
+  name   = var.name
 }
 
-output "job_name" {
-  value = module.job.app_name
+output "cluster_id" {
+  value = module.ecs.cluster_id
 }
 
-resource "random_string" "suffix" {
-  length = 8
+output "cluster_name" {
+  value = module.ecs.cluster_name
 }

@@ -1,9 +1,9 @@
 # ecs
 
 resource "aws_ecs_cluster" "cluster" {
-  name = local.full_name
+  name = var.name
 
   tags = {
-    Name = local.full_name
+    Name = var.name
   }
 }
