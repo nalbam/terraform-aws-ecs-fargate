@@ -1,7 +1,7 @@
 # ecs service
 
 resource "aws_ecs_service" "app" {
-  name            = local.full_name
+  name            = local.name
   cluster         = var.cluster_id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = "1"

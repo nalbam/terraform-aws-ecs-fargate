@@ -1,8 +1,13 @@
 # locals
 
 resource "random_pet" "this" {
+  length = 1
+
+  keepers = {
+    name = var.name
+  }
 }
 
 locals {
-  full_name = "${var.name}-${var.stage}-${random_pet.this.id}"
+  name = "${var.name}-${var.stage}-${random_pet.this.id}"
 }

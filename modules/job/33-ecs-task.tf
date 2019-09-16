@@ -1,7 +1,7 @@
 # ecs task
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = local.full_name
+  family                   = local.name
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.cpu
@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = <<DEFINITION
 [
   {
-    "name": "${local.full_name}",
+    "name": "${local.name}",
     "image": "${var.image}",
     "cpu": ${var.cpu},
     "memory": ${var.memory},
@@ -31,4 +31,9 @@ resource "aws_ecs_task_definition" "app" {
 ]
 DEFINITION
 
+  tags = {
+    Name    = "${local.name}-${var.cluster_name}"
+    Service = local.name
+    Cluster = var.cluster_name
+  }
 }

@@ -1,7 +1,7 @@
 # security group
 
 resource "aws_security_group" "private" {
-  name = "${local.full_name}-private"
+  name = "${local.name}-${var.cluster_name}-private"
 
   vpc_id = var.vpc_id
 
@@ -13,6 +13,8 @@ resource "aws_security_group" "private" {
   }
 
   tags = {
-    Name = "${local.full_name}-private"
+    Name    = "${local.name}-${var.cluster_name}-private"
+    Service = local.name
+    Cluster = var.cluster_name
   }
 }
