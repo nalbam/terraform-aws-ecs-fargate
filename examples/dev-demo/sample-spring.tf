@@ -1,7 +1,7 @@
 # ecs fargate
 
 module "sample_spring" {
-  source = "../../modules/fargate"
+  source = "../../"
 
   region = var.region
 

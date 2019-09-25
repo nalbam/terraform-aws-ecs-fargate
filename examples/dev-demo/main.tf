@@ -3,7 +3,7 @@
 terraform {
   backend "s3" {
     region = "ap-northeast-2"
-    bucket = "terraform-mz-seoul"
+    bucket = "terraform-nalbam-seoul"
     key    = "ecs-fargate.tfstate"
   }
   required_version = ">= 0.12"
@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 module "ecs" {
-  source = "../../modules/ecs"
+  source = "github.com/nalbam/terraform-aws-ecs?ref=v0.12.1"
 
   region = var.region
   name   = var.name

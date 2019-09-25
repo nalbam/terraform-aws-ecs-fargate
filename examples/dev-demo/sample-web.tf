@@ -1,7 +1,7 @@
 # ecs fargate
 
 module "sample_web" {
-  source = "../../modules/fargate"
+  source = "../../"
 
   region = var.region
 
