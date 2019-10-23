@@ -1,33 +1,27 @@
 # variable
 
+data "terraform_remote_state" "ecs" {
+  backend = "s3"
+  config = {
+    region = "ap-northeast-2"
+    bucket = "terraform-nalbam-seoul"
+    key    = "ecs-demo.tfstate"
+  }
+}
+
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+  config = {
+    region = "ap-northeast-2"
+    bucket = "terraform-nalbam-seoul"
+    key    = "vpc-demo.tfstate"
+  }
+}
+
 variable "region" {
   default = "ap-northeast-2"
 }
 
-variable "name" {
-  default = "seoul-dev-demo-fargate"
-}
-
 variable "base_domain" {
   default = "nalbam.com"
-}
-
-variable "vpc_id" {
-  default = "vpc-075279b4e48b983ff"
-}
-
-variable "subnet_public_ids" {
-  default = [
-    "subnet-08a5b599722126606",
-    "subnet-08d4e11f445bb207f",
-    "subnet-0706fbc7ebe262da7",
-  ]
-}
-
-variable "subnet_private_ids" {
-  default = [
-    "subnet-08a5b599722126606",
-    "subnet-08d4e11f445bb207f",
-    "subnet-0706fbc7ebe262da7",
-  ]
 }

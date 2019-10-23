@@ -5,12 +5,13 @@ module "sample_web" {
 
   region = var.region
 
-  cluster_id   = module.ecs.cluster_id
-  cluster_name = module.ecs.cluster_name
+  cluster_id   = data.terraform_remote_state.ecs.outputs.cluster_id
+  cluster_name = data.terraform_remote_state.ecs.outputs.cluster_name
 
-  vpc_id             = var.vpc_id
-  subnet_public_ids  = var.subnet_public_ids
-  subnet_private_ids = var.subnet_private_ids
+  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
+
+  private_subnet_ids = data.terraform_remote_state.vpc.outputs.public_subnet_ids
+  public_subnet_ids  = data.terraform_remote_state.vpc.outputs.public_subnet_ids
 
   name    = "sample-web"
   stage   = "dev"

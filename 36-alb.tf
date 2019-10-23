@@ -12,7 +12,7 @@ resource "aws_alb" "app" {
   # name_prefix = "fg-"
   name = "${var.name}-${random_pet.alb.id}"
 
-  subnets = var.subnet_public_ids
+  subnets = var.public_subnet_ids
 
   security_groups = [
     aws_security_group.public.id

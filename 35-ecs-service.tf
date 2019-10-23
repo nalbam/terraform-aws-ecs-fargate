@@ -9,7 +9,7 @@ resource "aws_ecs_service" "app" {
 
   network_configuration {
     security_groups = [aws_security_group.private.id]
-    subnets         = var.subnet_private_ids
+    subnets         = var.private_subnet_ids
   }
 
   load_balancer {

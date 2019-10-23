@@ -16,13 +16,13 @@ variable "vpc_id" {
   description = "VPC ID of the ecs cluster."
 }
 
-variable "subnet_public_ids" {
-  description = "Public Subnet IDs of the ecs cluster."
+variable "private_subnet_ids" {
+  description = "Private Subnet IDs of the ecs cluster."
   type        = list(string)
 }
 
-variable "subnet_private_ids" {
-  description = "Private Subnet IDs of the ecs cluster."
+variable "public_subnet_ids" {
+  description = "Public Subnet IDs of the ecs cluster."
   type        = list(string)
 }
 
