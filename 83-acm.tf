@@ -18,6 +18,8 @@ resource "aws_route53_record" "cert_validation" {
   records = [
     aws_acm_certificate.cert[0].domain_validation_options[0].resource_record_value,
   ]
+
+  depends_on = [aws_acm_certificate.cert]
 }
 
 resource "aws_acm_certificate_validation" "cert" {

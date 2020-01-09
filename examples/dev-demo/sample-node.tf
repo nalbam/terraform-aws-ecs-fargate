@@ -16,7 +16,7 @@ module "sample_node" {
   name    = "sample-node"
   stage   = "dev"
   image   = "nalbam/sample-node"
-  port    = "8080"
+  port    = "3000"
   cpu     = "256"
   memory  = "512"
   desired = "1"
