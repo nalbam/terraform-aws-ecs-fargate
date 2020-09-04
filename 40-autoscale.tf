@@ -1,4 +1,4 @@
-# autoscal
+# autoscale
 
 resource "aws_appautoscaling_policy" "app_up" {
   name               = "app-scale-up"

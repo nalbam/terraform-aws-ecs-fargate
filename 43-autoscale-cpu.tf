@@ -1,4 +1,4 @@
-# autoscal cpu
+# autoscale cpu
 
 resource "aws_cloudwatch_metric_alarm" "cpu_high" {
   alarm_name          = "${aws_ecs_service.app.name}-CPU-Utilization-High-${var.cpu_high}"

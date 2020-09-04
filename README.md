@@ -14,8 +14,4 @@ aws configure set default.region ap-northeast-2
 terraform init
 terraform plan
 terraform apply
-
-# ecs
-aws ecs list-clusters
-aws ecs describe-cluster --name demo
 ```

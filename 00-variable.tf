@@ -77,6 +77,3 @@ variable "domain" {
 variable "base_domain" {
   default = ""
 }
-
-data "aws_availability_zones" "azs" {
-}
