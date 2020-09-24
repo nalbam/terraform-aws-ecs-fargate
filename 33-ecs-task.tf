@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "app" {
   cpu                      = var.cpu
   memory                   = var.memory
 
-  container_definitions = [local.json_map]
+  container_definitions = format("[%s]", local.json_map)
 
   tags = {
     Name    = "${local.name}-${var.cluster_name}"
