@@ -39,35 +39,35 @@ variable "image" {
 }
 
 variable "desired" {
-  default = "1"
+  default = 1
 }
 
 variable "min" {
-  default = "1"
+  default = 1
 }
 
 variable "max" {
-  default = "10"
+  default = 2
 }
 
 variable "cpu" {
-  default = "256"
+  default = 256
 }
 
 variable "memory" {
-  default = "512"
+  default = 512
 }
 
 variable "port" {
-  default = "8080"
+  default = 8080
 }
 
 variable "cpu_low" {
-  default = "20"
+  default = 20
 }
 
 variable "cpu_high" {
-  default = "80"
+  default = 80
 }
 
 variable "domain" {
