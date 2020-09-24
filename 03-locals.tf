@@ -25,7 +25,7 @@ locals {
         value = var.stage
       },
     ]
-  }
+  )
 
   container_definition = {
     name         = local.name
