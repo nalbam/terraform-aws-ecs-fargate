@@ -77,3 +77,11 @@ variable "domain" {
 variable "base_domain" {
   default = ""
 }
+
+variable "environment" {
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  default = []
+}
