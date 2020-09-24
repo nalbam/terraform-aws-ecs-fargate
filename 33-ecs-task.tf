@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = format("[%s]", local.json_map)
 
   tags = {
-    Name    = "${local.name}-${var.cluster_name}"
+    Name    = local.full_name
     Service = local.name
     Cluster = var.cluster_name
   }
