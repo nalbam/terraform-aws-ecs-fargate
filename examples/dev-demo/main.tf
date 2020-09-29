@@ -2,13 +2,12 @@
 
 terraform {
   backend "s3" {
-    region = "ap-northeast-2"
-    bucket = "terraform-nalbam-seoul"
-    key    = "ecs-fargate.tfstate"
-    # encrypt        = true
-    # dynamodb_table = "terraform-resource-lock"
+    region         = "ap-northeast-2"
+    bucket         = "terraform-nalbam-seoul"
+    key            = "ecs-fargate.tfstate"
+    dynamodb_table = "terraform-resource-lock"
+    encrypt        = true
   }
-  required_version = ">= 0.12"
 }
 
 provider "aws" {
